@@ -98,7 +98,12 @@ public class nameGenerator
 			//System.out.println(s);
 			for(int i = 1; i < name.length(); i++)
 			{
-				if(name.charAt(i) < 'A' || name.charAt(i) > 'Z' || name.charAt(i-1) < 'A' || name.charAt(i-1) > 'Z')
+				if(
+					name.charAt(i) < 'A' ||
+					name.charAt(i) > 'Z' ||
+					name.charAt(i-1) < 'A' ||
+					name.charAt(i-1) > 'Z'
+					)
 					continue;
 				tempMarkovArray[name.charAt(i-1)-65][name.charAt(i)-65]++;
 				alphaCountArray[name.charAt(i-1)-65]++;
