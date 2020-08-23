@@ -21,7 +21,6 @@ public class nameGenerator
 		_randomGenerator = new Random(); //Initializes the random function
 	}
 
-
 	/*
 	void printNames: Method
 	3 input variables
@@ -29,10 +28,9 @@ public class nameGenerator
 	minNameLength: the minimum length of any name created
 	maxNameLength: the maximum length of any name created
 	numberOfNames: the number of names to be created
-
-	
 	*/
-	public void printNames(int minNameLength, int maxNameLength, int numberOfNames) 
+
+	public void printNames(int minNameLength, int maxNameLength, int numberOfNames)
 	{
 		for(int i = 0; i < numberOfNames; i++)
 		{
@@ -41,12 +39,12 @@ public class nameGenerator
 
 		return;
 	}
-	
+
 	public String nameCreator(int minNameLength, int maxNameLength)
 	{
 		String name = "";
 		int nameLength = _randomGenerator.nextInt(maxNameLength-minNameLength+1)+minNameLength;
-		
+
 		for(int i = 0; i < nameLength; i++)
 		{
 			if(i == 0)
@@ -55,10 +53,10 @@ public class nameGenerator
 
 				continue;
 			}
-			
+
 			name+=_findNextLetter(name, i);
 		}
-		
+
 		return _capitalize(name);
 	}
 
@@ -84,14 +82,14 @@ public class nameGenerator
 		name = ((char)(firstLetter-32) + name);
 		return name;
 	}
-	
+
 	private static double[][] _loadMatrixData(File nameList) throws IOException
 	{
 		double tempMarkovArray[][] = new double[_ALPHA][_ALPHA];
 		Scanner sc = new Scanner(nameList);
-		
+
 		int alphaCountArray[] = new int[_ALPHA];
-		
+
 		while(sc.hasNext())
 		{
 			String name = sc.next();
@@ -106,9 +104,9 @@ public class nameGenerator
 				alphaCountArray[name.charAt(i-1)-65]++;
 			}
 		}
-		
+
 		sc.close();
-		
+
 		return _divideAverage(tempMarkovArray, alphaCountArray);
 	}
 
